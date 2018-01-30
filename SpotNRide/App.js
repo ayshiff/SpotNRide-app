@@ -1,21 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-
+import { StyleSheet, Text, View, TextInput, Image, Switch/*, Modal*/ } from 'react-native';
+import { ButtonGroup, Overlay } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
 
 export default class App extends React.Component {
 
-state = {
-  latitude: null,
-  longitude : null,
-  errorMessage: null,
-  text: 'Rechercher'
-    }
+  constructor(props){
+    super(props)
+    this.state = {
+      latitude: null,
+      longitude : null,
+      errorMessage: null,
+      selectedIndex: 1,
+      isVisible: false,
+      switchValue: false
+      }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+
+
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+    this.setState({
+      isVisible: true
+    })
+  }
 
   componentWillMount() {
-
       this._getLocationAsync();
-
   }
 
   _getLocationAsync = async () => {
@@ -34,25 +46,48 @@ state = {
       this.forceUpdate()
   };
 
+  componentSearch = () => <Image style={{width: 18, height:18}} source={require('./img/search.png')} />
+
   render() {
-    console.log(this.state.latitude)
+    const buttons = ['Spots', 'Riders',{element: this.componentSearch}]
+    const {selectedIndex} = this.state
     return (
       <View style={styles.container}>
      
       <MapView
         style={ styles.map }
         initialRegion={{
-          latitude: this.state.latitude,
-          longitude: this.state.longitude,
+          latitude: 48.866667, //this.state.latitude,
+          longitude: 2.333333, //this.state.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
       />
-       <TextInput
-      style={styles.search}
-      onChangeText={(text) => this.setState({text})}
-      value={this.state.text}
+      <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex= {selectedIndex}
+          buttons={buttons}
+          containerStyle={styles.buttons}
+          selectedTextStyle={{color: '#f44336'}}
+          textStyle={{fontSize: 13}}
       />
+  {/*    <Modal 
+      transparent={true}
+      visible={this.state.isVisible}
+      animationType={'slide'}
+      >*/}
+      <View style={{
+            backgroundColor:'#f0f0f0',
+            width: 50,
+            height: 50}}>
+      
+    </View>
+
+      <Switch value={this.state.switchValue}
+      onValueChange={(value) => this.setState({switchValue: value}) }
+       style={{position:'absolute', zIndex:2147483647, marginTop: 200 }}
+        onTintColor='#f44336'/>
+ {/*   </Modal> */}
       </View>
     );
   }
@@ -65,17 +100,21 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 1
+    zIndex: 1,
+    flex: 1
   },
   container:{
     flex: 1
   },
-  search:{
+  buttons:{
     height: 40,
-    borderWidth: 1,
+    borderWidth: 0.5,
     zIndex:2147483647,
     marginRight: 30,
     marginLeft: 30,
-    marginTop: 60
-  }
+    marginTop: 60,
+    backgroundColor:'#fafafa',
+    position: 'absolute',
+    width: 300
+  },
 });
