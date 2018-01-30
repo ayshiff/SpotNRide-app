@@ -1,26 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity } from 'react-native';
 import { ButtonGroup, Overlay } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
+// import mapStyle from './MapStyle'
 
 export default class Map extends React.Component {
-    static navigationOptions = {
-        header: {
-          visible: false,
-        }
-      }
-
+    
   constructor(props){
     super(props)
     this.state = {
       latitude: null,
       longitude : null,
       errorMessage: null,
-      selectedIndex: null,
+      selectedIndex: 0,
       isVisible: false,
       switchValue: false,
       type: 'Skatepark',
-      activite: 'Activités'
+      activite: 'Activités',
+      markers: [{latlng:{latitude: 48.866667, longitude: 2.333333},title:'title', description: 'description'},
+      {latlng:{latitude: 50.996667, longitude: 2.783333},title:'title', description: 'description'}]
+        
       }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -28,9 +27,21 @@ export default class Map extends React.Component {
 
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
-    this.setState({
+    if(selectedIndex === 2){
+      this.setState({
       isVisible: true
     })
+    if(this.state.isVisible === true){
+      this.setState({
+        isVisible: false
+      })
+    }
+    } else {
+      this.setState({
+        isVisible: false
+      })
+    }
+    
   }
 
   componentWillMount() {
@@ -54,13 +65,14 @@ export default class Map extends React.Component {
   };
 
 
-  componentSearch = () => <Image style={{width: 18, height:18}} source={require('./img/search.png')} />
+  componentSearch = () => <Image style={{width: 16, height:18.5}} source={require('./img/search.png')} />
 
   render() {
+    // Modal lors du click sur un boutton
     const showModal = <View style={{
       paddingLeft: 20,
       paddingRight: 20,
-      display: 'flex',
+      flex: 1,
       flexDirection: 'column',
       marginRight: 30,
       marginLeft: 30,
@@ -71,6 +83,7 @@ export default class Map extends React.Component {
       backgroundColor:'#f0f0f0',
       height: 300}}>
 
+      <Text >Type</Text>
       <Picker
         selectedValue={this.state.type}
         onValueChange={(itemValue, itemIndex) => this.setState({type: itemValue})}>
@@ -85,7 +98,7 @@ export default class Map extends React.Component {
         <Picker.Item label="Ride" value="Ride" />
         </Picker>*/}
 
-      <Text >  Couvert           </Text>
+      <Text >Couvert</Text>
       <Switch value={this.state.switchValue}
       onValueChange={(value) => this.setState({switchValue: value}) }
        style={{ marginTop: 10, height: 5, width: 20 }}
@@ -107,8 +120,17 @@ export default class Map extends React.Component {
           longitude: 2.333333, //this.state.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
+         // customMapStyle={mapStyle}
         }}
-      />
+      >
+      {this.state.markers.map(marker => (
+    <MapView.Marker
+      coordinate={marker.latlng}
+      title={marker.title}
+      description={marker.description}
+    />
+  ))}
+  </MapView>
       <ButtonGroup
           onPress={this.updateIndex}
           selectedIndex= {selectedIndex}
@@ -130,6 +152,12 @@ export default class Map extends React.Component {
       
   {/*  </Modal> */} 
   {this.state.isVisible ? showModal : null}
+  <TouchableOpacity >
+      <Image
+          source={require('./img/bottomButton.png')}
+          style={{position: 'absolute',bottom: -78, width: 95,resizeMode: 'contain',zIndex:2147483647}}
+        />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -146,7 +174,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container:{
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   buttons:{
     height: 40,
