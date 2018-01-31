@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button } from 'react-native';
 import { ButtonGroup, Overlay } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
 // import mapStyle from './MapStyle'
@@ -102,9 +102,9 @@ export default class Map extends React.Component {
       <Switch value={this.state.switchValue}
       onValueChange={(value) => this.setState({switchValue: value}) }
        style={{ marginTop: 10, height: 5, width: 20 }}
-        onTintColor='#f44336'/>
+        onTintColor='#f44336'/></View>
       
-      </View>
+      
   
     const buttons = ['Spots', 'Riders',{element: this.componentSearch}]
     const {selectedIndex} = this.state
@@ -139,7 +139,10 @@ export default class Map extends React.Component {
           selectedTextStyle={{color: '#f44336'}}
           textStyle={{fontSize: 13}}
       />
-    {/*  <Modal 
+    {/*   <Button
+       icon={require('./img/search.png')} />
+      />
+     <Modal 
       transparent={false}
       visible={this.state.isVisible}
      // style={styles.modal}
@@ -152,12 +155,14 @@ export default class Map extends React.Component {
       
   {/*  </Modal> */} 
   {this.state.isVisible ? showModal : null}
-  <TouchableOpacity >
+  <View style={{position: 'absolute',bottom: 0,zIndex:2147483647}}>
+  <TouchableOpacity activeOpacity={0.6} >
       <Image
           source={require('./img/bottomButton.png')}
-          style={{position: 'absolute',bottom: -78, width: 95,resizeMode: 'contain',zIndex:2147483647}}
+          style={{height:58, width: 95}}
         />
         </TouchableOpacity>
+        </View>
       </View>
     );
   }
