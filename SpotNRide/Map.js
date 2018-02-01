@@ -255,6 +255,8 @@ export default StackNavigator(
     screen: Map},
     Profile: {
       screen: Profile,
+      mode: 'modal'
   }
-},{ headerMode: 'none' }
+},{ headerMode: 'none',
+mode: 'modal' }
 );
