@@ -258,5 +258,8 @@ export default StackNavigator(
       mode: 'modal'
   }
 },{ headerMode: 'none',
-mode: 'modal' }
+    mode: 'modal',
+    navigationOptions: {
+      headerBackTitle:'Profile',
+} }
 );

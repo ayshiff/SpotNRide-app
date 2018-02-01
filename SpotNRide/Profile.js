@@ -37,6 +37,8 @@ class Profile extends Component {
     }
 }
 
+const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={require('./img/star.png')} />
+
 export default StackNavigator(
     {
     HomeScreen: {
@@ -45,5 +47,8 @@ export default StackNavigator(
       screenMap: {
         screen: Profile
     }
-}
+},{navigationOptions: {
+    headerTitle:'Profile',
+    headerRight: star
+}}
   );
