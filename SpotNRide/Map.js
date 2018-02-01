@@ -18,6 +18,7 @@ export default class Map extends React.Component {
       type: 'Skatepark',
       activite: 'Activités',
       renderbottomButton: false,
+      showBottomButtonIndex:0,
       markers: [{latlng:{latitude: 48.866667, longitude: 2.333333},title:'title', description: 'description'},
       {latlng:{latitude: 50.996667, longitude: 2.783333},title:'title', description: 'description'}]
         
@@ -68,6 +69,14 @@ export default class Map extends React.Component {
 
   componentSearch = () => <Image style={{width: 16, height:18.5}} source={require('./img/search.png')} />
 
+  showButton = () => {
+    if(this.state.showBottomButtonIndex === 1){
+      this.setState({showBottomButton: false,showBottomButtonIndex: 0})
+    } else {
+      this.setState({showBottomButton: true, showBottomButtonIndex: 1})
+    }
+  }
+
   render() {
     // Modal lors du click sur un boutton
     const showModal = <View style={{
@@ -105,7 +114,7 @@ export default class Map extends React.Component {
        style={{ marginTop: 10, height: 5, width: 20 }}
         onTintColor='#f44336'/></View>
 
-    const showBottomButton = <Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />
+    const showBottomButton = <Image style={{width: 240, height: 130,bottom: 0,position:'absolute'}}  source={require('./img/bottomButtonCircle.png')} />
        
       
       
@@ -159,16 +168,19 @@ export default class Map extends React.Component {
       
   {/*  </Modal> */} 
   {this.state.isVisible ? showModal : null}
-  <View style={{flex: 1,bottom: 0,zIndex:2147483647}}>
-  <TouchableOpacity activeOpacity={0.6} onPress={() => this.setState({showBottomButton: true})} >
+  <View style={{flex:1,bottom: 0,zIndex:2147483647,position: 'absolute',alignItems: 'center',justifyContent:'center',paddingLeft:20,
+        paddingRight:134, }}>
+  {/*<Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />*/}
+  {this.state.showBottomButton ? showBottomButton : null}
+  <TouchableOpacity activeOpacity={0.6} onPress={() => this.showButton()} >
       <Image
           source={require('./img/bottomButton.png')}
-          style={{height:58, width: 95,bottom:-200,position: 'absolute'}}
+          style={{height:69, width: 115, bottom:0,position: 'absolute'}}
         />
         </TouchableOpacity>
         
-        <Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />
-        {this.state.showBottomButton ? showBottomButton : null}
+        
+        
         </View>
       </View>
     );
