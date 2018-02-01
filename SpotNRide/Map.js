@@ -114,7 +114,27 @@ export default class Map extends React.Component {
        style={{ marginTop: 10, height: 5, width: 20 }}
         onTintColor='#f44336'/></View>
 
-    const showBottomButton = <Image style={{width: 240, height: 130,bottom: 0,position:'absolute'}}  source={require('./img/bottomButtonCircle.png')} />
+    const showBottomButton = 
+        <View style={{
+      borderColor:'rgba(0,0,0,0.2)',
+      alignItems:'center',
+      justifyContent:'center',
+      width: 240,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.4,
+      shadowRadius: 2,
+       height: 130,
+       bottom: 0,
+       borderTopLeftRadius: 120,
+       borderTopRightRadius: 120,
+       position:'absolute',
+      backgroundColor:'#f6f6f6',
+ 
+    }}></View>
+    
+
+  //<Image style={{width: 240, height: 130,bottom: 0,position:'absolute'}}  source={require('./img/bottomButtonCircle.png')} />
        
       
       
@@ -152,6 +172,7 @@ export default class Map extends React.Component {
           selectedTextStyle={{color: '#f44336'}}
           textStyle={{fontSize: 13}}
       />
+      
     {/*   <Button
        icon={require('./img/search.png')} />
       />
