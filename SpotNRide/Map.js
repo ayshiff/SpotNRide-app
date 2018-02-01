@@ -17,6 +17,7 @@ export default class Map extends React.Component {
       switchValue: false,
       type: 'Skatepark',
       activite: 'Activités',
+      renderbottomButton: false,
       markers: [{latlng:{latitude: 48.866667, longitude: 2.333333},title:'title', description: 'description'},
       {latlng:{latitude: 50.996667, longitude: 2.783333},title:'title', description: 'description'}]
         
@@ -103,6 +104,9 @@ export default class Map extends React.Component {
       onValueChange={(value) => this.setState({switchValue: value}) }
        style={{ marginTop: 10, height: 5, width: 20 }}
         onTintColor='#f44336'/></View>
+
+    const showBottomButton = <Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />
+       
       
       
   
@@ -155,13 +159,16 @@ export default class Map extends React.Component {
       
   {/*  </Modal> */} 
   {this.state.isVisible ? showModal : null}
-  <View style={{position: 'absolute',bottom: 0,zIndex:2147483647}}>
-  <TouchableOpacity activeOpacity={0.6} >
+  <View style={{flex: 1,bottom: 0,zIndex:2147483647}}>
+  <TouchableOpacity activeOpacity={0.6} onPress={() => this.setState({showBottomButton: true})} >
       <Image
           source={require('./img/bottomButton.png')}
-          style={{height:58, width: 95}}
+          style={{height:58, width: 95,bottom:-200,position: 'absolute'}}
         />
         </TouchableOpacity>
+        
+        <Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />
+        {this.state.showBottomButton ? showBottomButton : null}
         </View>
       </View>
     );
