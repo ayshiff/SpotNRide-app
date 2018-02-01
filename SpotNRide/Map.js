@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
 import { ButtonGroup, Overlay } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
+import {StackNavigator} from 'react-navigation';
+import Profile from './Profile'
 // import mapStyle from './MapStyle'
 
-export default class Map extends React.Component {
+class Map extends React.Component {
     
   constructor(props){
     super(props)
@@ -65,6 +67,7 @@ export default class Map extends React.Component {
       });
       this.forceUpdate()
   };
+
 
 
   componentSearch = () => <Image style={{width: 16, height:18.5}} source={require('./img/search.png')} />
@@ -129,9 +132,13 @@ export default class Map extends React.Component {
        borderTopLeftRadius: 120,
        borderTopRightRadius: 120,
        position:'absolute',
-      backgroundColor:'#f6f6f6',
- 
-    }}></View>
+      backgroundColor:'#f6f6f6',      
+    }}>
+    <TouchableHighlight onPress={() => this.props.navigation.navigate('Profile')}>
+    <Image style={{width: 26, height: 26,position:'absolute',zIndex:2147483647,right: 17, bottom: 14}}  source={require('./img/profile.png')} />
+</TouchableHighlight>
+    
+    </View>
     
 
   //<Image style={{width: 240, height: 130,bottom: 0,position:'absolute'}}  source={require('./img/bottomButtonCircle.png')} />
@@ -241,3 +248,13 @@ const styles = StyleSheet.create({
         height: 10
   }
 });
+
+export default StackNavigator(
+  {
+  HomeScreen: {
+    screen: Map},
+    Profile: {
+      screen: Profile,
+  }
+},{ headerMode: 'none' }
+);
