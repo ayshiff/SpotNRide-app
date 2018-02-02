@@ -196,14 +196,13 @@ class Map extends React.Component {
       
   {/*  </Modal> */} 
   {this.state.isVisible ? showModal : null}
-  <View style={{flex:1,bottom: 0,zIndex:2147483647,position: 'absolute',alignItems: 'center',justifyContent:'center',paddingLeft:20,
-        paddingRight:134, }}>
+  <View style={{flex:1,bottom: 0,zIndex:2147483647,position: 'absolute',alignItems: 'center',justifyContent:'center' }}>
   {/*<Image style={{width: 250, height: 130,bottom: 0}}  source={require('./img/bottomButtonCircle.png')} />*/}
   {this.state.showBottomButton ? showBottomButton : null}
   <TouchableOpacity activeOpacity={0.6} onPress={() => this.showButton()} >
       <Image
           source={require('./img/bottomButton.png')}
-          style={{height:69, width: 115, bottom:0,position: 'absolute'}}
+          style={{height:69, width: 115, bottom:0}}
         />
         </TouchableOpacity>
         
@@ -259,7 +258,5 @@ export default StackNavigator(
   }
 },{ headerMode: 'none',
     mode: 'modal',
-    navigationOptions: {
-      headerBackTitle:'Profile',
-} }
+     }
 );
