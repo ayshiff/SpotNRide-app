@@ -131,7 +131,7 @@ class Map extends React.Component {
        bottom: 0,
        borderTopLeftRadius: 120,
        borderTopRightRadius: 120,
-       position:'absolute',
+       position:'absolute', // Remove the absolute position
       backgroundColor:'#f6f6f6',      
     }}>
     <TouchableHighlight onPress={() => this.props.navigation.navigate('Profile')}>

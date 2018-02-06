@@ -4,14 +4,14 @@ import Mapv from './Map.js'
 import {StackNavigator} from 'react-navigation';
 
 
-class Profile extends Component {
+class Spot extends Component {
 
     constructor(props){
         super(props)
         this.state = {
             login: '',
             password: '',
-            selectedIndex: 0
+            selectedIndex: 1
         }
         this.updateIndex = this.updateIndex.bind(this)
     }
@@ -22,23 +22,14 @@ class Profile extends Component {
         })
     }
 
-    component1 = () => <Image style={{width: 16, height:18.5}} source={require('./img/starProfile.png')} />
-    component2 = () => <Image style={{width: 16, height:18.5}} source={require('./img/settings.png')} />
-    component3 = () => <Image style={{width: 16, height:18.5}} source={require('./img/email.png')} />
+    component1 = () => <Image style={{width: 16, height:18.5}} source={require('./img/community.png')} />
+    component2 = () => <Image style={{width: 16, height:18.5}} source={require('./img/photo.png')} />
+    component3 = () => <Image style={{width: 16, height:18.5}} source={require('./img/conversion.png')} />
 
     render(){
 
-        const cardView = () => <View style = {{
-            marginTop: 14,marginLeft: 10,marginRight: 10,flex: 1, flexDirection: 'row',
-            justifyContent: 'space-around', backgroundColor:'#fafafa'}}>
-            
-        <Image style={{width:70, height: 'auto'}} source={reuire('./img/skatePark.png')} />
-        <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}> 
-            <Text style={{fontSize:20, fontWeight:'bold'}}> Cosanostra </Text>
-            <Text style={{fontSize:14}}> Meilleur skatepark d'Olréans</Text>
-            <Text style={{fontSize: 10}}> 24 rue des Tours, 45000 Orléans</Text>
-            </View>
-        </View>
+        const imageView = () => <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 200}}
+         source={require('./img/imageSkatePark.png')} />
 
         const {selectedIndex} = this.state
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
@@ -63,10 +54,18 @@ class Profile extends Component {
                 selectedTextStyle={{color: '#f44336'}}
                 textStyle={{fontSize: 13}}
       />               
-                </View >
-                <View style={{backgroundColor:'#f0f0f0'}}>
+    
+                </View>
+
+                <View style={{backgroundColor:'#f0f0f0', flex: 1, flexDirection: 'row',
+                 flexWrap: 'wrap', alignItems:'center', justifyContent: 'space-around'}}>
+                 <imageView />
+                 <imageView />
+                 <imageView />
+                 <imageView />
 
                 </View>
+
             </View>
         )
     }
@@ -77,13 +76,13 @@ const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={req
 export default StackNavigator(
     {
     HomeScreen: {
-      screen: Profile,
+      screen: Spot,
       headerBackTitle: 'Back'},
       screenMap: {
-        screen: Profile
+        screen: Mapv
     }
 },{navigationOptions: {
-    headerTitle:'Profile',
+    headerTitle:'Spot',
     headerRight: star
 }}
   );
