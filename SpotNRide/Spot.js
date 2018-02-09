@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
-import Mapv from './Map.js'
+import MapScreen from './Map.js'
+import { ButtonGroup } from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
 
 
@@ -22,22 +23,22 @@ class Spot extends Component {
         })
     }
 
-    component1 = () => <Image style={{width: 16, height:18.5}} source={require('./img/community.png')} />
-    component2 = () => <Image style={{width: 16, height:18.5}} source={require('./img/photo.png')} />
-    component3 = () => <Image style={{width: 16, height:18.5}} source={require('./img/conversion.png')} />
+    component1 = () => <Image style={{width: 20, resizeMode:'contain'}} source={require('./img/community.png')} />
+    component2 = () => <Image style={{width: 20, resizeMode:'contain'}} source={require('./img/photo.png')} />
+    component3 = () => <Image style={{width: 20, resizeMode:'contain'}} source={require('./img/conversion.png')} />
 
     render(){
 
-        const imageView = () => <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 200}}
+        const imageView = <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 140, height:140, zIndex: 20}}
          source={require('./img/imageSkatePark.png')} />
 
         const {selectedIndex} = this.state
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginLeft: 20,marginRight:20,marginTop: 200}} >
+            <View style={{flex: 1, flexDirection: 'column',marginLeft: 20,marginRight:20,marginTop: 60}} >
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Image style={{}} source={require()} />
+            <Image style={{}} />
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}> 
             <Text style={{}}></Text>
             <Text style={{}}></Text>
@@ -59,10 +60,14 @@ class Spot extends Component {
 
                 <View style={{backgroundColor:'#f0f0f0', flex: 1, flexDirection: 'row',
                  flexWrap: 'wrap', alignItems:'center', justifyContent: 'space-around'}}>
-                 <imageView />
-                 <imageView />
-                 <imageView />
-                 <imageView />
+                 {imageView}
+                 {imageView}
+                 {imageView}
+                 {imageView}
+                 {imageView}
+                 {imageView}
+                 {imageView}
+
 
                 </View>
 
@@ -76,10 +81,10 @@ const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={req
 export default StackNavigator(
     {
     HomeScreen: {
-      screen: Spot,
-      headerBackTitle: 'Back'},
+      screen: Spot
+    },
       screenMap: {
-        screen: Mapv
+        screen: Spot
     }
 },{navigationOptions: {
     headerTitle:'Spot',

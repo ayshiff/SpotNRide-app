@@ -4,6 +4,7 @@ import { ButtonGroup, Overlay } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
 import {StackNavigator} from 'react-navigation';
 import Profile from './Profile'
+import Spot from './Spot'
 // import mapStyle from './MapStyle'
 
 class Map extends React.Component {
@@ -165,6 +166,7 @@ class Map extends React.Component {
       >
       {this.state.markers.map(marker => (
     <MapView.Marker
+        onPress= {() => this.props.navigation.navigate('Spot')}
       coordinate={marker.latlng}
       title={marker.title}
       description={marker.description}
@@ -205,9 +207,6 @@ class Map extends React.Component {
           style={{height:69, width: 115, bottom:0}}
         />
         </TouchableOpacity>
-        
-        
-        
         </View>
       </View>
     );
@@ -255,6 +254,10 @@ export default StackNavigator(
     Profile: {
       screen: Profile,
       mode: 'modal'
+  },
+  Spot: {
+    screen: Spot,
+    mode: 'modal'
   }
 },{ headerMode: 'none',
     mode: 'modal',
