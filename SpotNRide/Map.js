@@ -5,7 +5,7 @@ import { MapView, Location, Permissions, Constants } from 'expo';
 import {StackNavigator} from 'react-navigation';
 import Profile from './Profile'
 import Spot from './Spot'
-import data from '../Scraping/SkatePark'
+import data from './data.json'
 // import mapStyle from './MapStyle'
 
 class Map extends React.Component {
