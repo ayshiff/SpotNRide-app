@@ -13,7 +13,7 @@ function push(){
 
 function addMarker(idValue, latitudeValue, longitudeValue,adressValue, param1Value,param2Value){
 
-    let data = {id: idValue, latitude: latitudeValue,longitude: longitudeValue, adress: adressValue}
+    let data = {latlng:{latitude: latitudeValue, longitude: longitudeValue},title:adressValue}
     dataToPush.push(data)
 
 }

@@ -5,6 +5,7 @@ import { MapView, Location, Permissions, Constants } from 'expo';
 import {StackNavigator} from 'react-navigation';
 import Profile from './Profile'
 import Spot from './Spot'
+import data from '../Scraping/SkatePark'
 // import mapStyle from './MapStyle'
 
 class Map extends React.Component {
@@ -22,8 +23,7 @@ class Map extends React.Component {
       activite: 'Activités',
       renderbottomButton: false,
       showBottomButtonIndex:0,
-      markers: [{latlng:{latitude: 48.866667, longitude: 2.333333},title:'title', description: 'description'},
-      {latlng:{latitude: 50.996667, longitude: 2.783333},title:'title', description: 'description'}]
+      markers: JSON.parse(data)
         
       }
     this.updateIndex = this.updateIndex.bind(this)
@@ -169,7 +169,7 @@ class Map extends React.Component {
         onPress= {() => this.props.navigation.navigate('Spot')}
       coordinate={marker.latlng}
       title={marker.title}
-      description={marker.description}
+      description={marker.adress}
     />
   ))}
   </MapView>
