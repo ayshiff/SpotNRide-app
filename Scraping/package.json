@@ -1,12 +1,13 @@
 {
-    "name"         : "Scraping",
-    "version"      : "0.0.1",
-    "description"  : "Scrape for SpotNRide",
-    "main"         : "server.js",
-    "author"       : "Ayshiff",
-    "dependencies" : {
-      "express"    : "latest",
-      "request"    : "latest",
-      "cheerio"    : "latest"
-    }
+  "name": "Scraping",
+  "version": "0.0.1",
+  "description": "Scrape for SpotNRide",
+  "main": "server.js",
+  "author": "Ayshiff",
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "jsonfile": "^4.0.0",
+    "request": "latest"
   }
+}
