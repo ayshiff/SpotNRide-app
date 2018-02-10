@@ -23,7 +23,7 @@ class Map extends React.Component {
       activite: 'Activités',
       renderbottomButton: false,
       showBottomButtonIndex:0,
-      markers: JSON.parse(data)
+      markers: data
         
       }
     this.updateIndex = this.updateIndex.bind(this)
