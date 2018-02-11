@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,Touchab
 import MapScreen from './Map.js'
 import { ButtonGroup } from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
+import {ScrollView, FlatList} from 'react-native'
 
 
 class Spot extends Component {
@@ -35,7 +36,7 @@ class Spot extends Component {
         const {selectedIndex} = this.state
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginLeft: 20,marginRight:20,marginTop: 60}} >
+            <View style={{flex: 1, flexDirection: 'column',marginTop: 60}} >
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}> 
             <Image style={{}} />
@@ -51,15 +52,16 @@ class Spot extends Component {
                 onPress={this.updateIndex}
                 selectedIndex= {selectedIndex}
                 buttons={buttons}
-                containerStyle={{borderWidth: 0,height: 45}}
+                containerStyle={{borderWidth: 0,height: 45, width: '100%', marginLeft: 0, marginRight: 0 }}
                 selectedTextStyle={{color: '#f44336'}}
                 textStyle={{fontSize: 13}}
       />               
     
                 </View>
 
-                <View style={{backgroundColor:'#f0f0f0', flex: 1, flexDirection: 'row',
-                 flexWrap: 'wrap', alignItems:'center', justifyContent: 'space-around'}}>
+                <View style={{backgroundColor:'#f0f0f0', flex: 1}}>
+                 <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems:'center', justifyContent: 'space-around',flexDirection: 'row',
+                 flexWrap: 'wrap'}} >
                  {imageView}
                  {imageView}
                  {imageView}
@@ -67,7 +69,7 @@ class Spot extends Component {
                  {imageView}
                  {imageView}
                  {imageView}
-
+                 </ScrollView>
 
                 </View>
 

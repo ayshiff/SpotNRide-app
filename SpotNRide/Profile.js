@@ -4,7 +4,7 @@ import Mapv from './Map.js'
 import {StackNavigator} from 'react-navigation';
 import { ButtonGroup } from 'react-native-elements';
 
-
+import {ScrollView} from 'react-native'
 import iconStarProfile from './img/starProfile.png'
 import iconSettings from './img/settings.png'
 import iconEmail from './img/email.png'
@@ -35,8 +35,8 @@ class Profile extends Component {
 
     render(){
 
-        const cardView = () => <View style = {{
-            marginTop: 14,marginLeft: 10,marginRight: 10,flex: 1, flexDirection: 'row',
+        const cardView = <View style = {{
+            marginTop: 30,marginLeft: 10,marginRight: 10,marginBottom: 10,flex: 1, flexDirection: 'row',
             justifyContent: 'space-around', backgroundColor:'#fafafa'}}>
             
         <Image style={{width:70, height: 'auto'}} source={iconSkatePark} />
@@ -51,7 +51,7 @@ class Profile extends Component {
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         
         return (
-            <View style={{marginTop: 200}} >
+            <View style={{flex: 1, flexDirection: 'column',marginTop: 60}} >
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around',marginLeft: 20, marginRight: 20}}> 
             <Image style={{}} />
@@ -72,7 +72,17 @@ class Profile extends Component {
                 textStyle={{fontSize: 13}}
       />               
                 </View >
-                <View style={{backgroundColor:'#f0f0f0'}}>
+                <View style={{backgroundColor:'#f0f0f0', flex: 1}}>
+                 <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems:'center', justifyContent: 'space-around',flexDirection: 'row',
+                 flexWrap: 'wrap'}} >
+                 {cardView}
+                 {cardView}
+                 {cardView}
+                 {cardView}
+                 {cardView}
+                 {cardView}
+                 {cardView}
+                 </ScrollView>
 
                 </View>
             </View>
