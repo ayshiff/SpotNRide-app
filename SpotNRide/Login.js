@@ -5,6 +5,7 @@ import { MapView, Location, Permissions, Constants } from 'expo';
 import Mapv from './Map.js'
 import {StackNavigator} from 'react-navigation';
 import * as firebase from 'firebase';
+import logoSpotNRide from './img/spotnride.png'
 
 
 class Login extends Component {
@@ -35,16 +36,24 @@ class Login extends Component {
     render(){
 
         return (
-            <View style={{flex: 1, flexDirection: 'column', backgroundColor:'#fafafa', alignItems:'center'}} >
+            <View style={{flex: 1, flexDirection: 'column', backgroundColor:'#fafafa', alignItems:'center', 
+        justifyContent: 'space-between'}} >
+
+                <View style={{flex: 1,flexDirection: 'row', marginTop:280}}>
+                <Image source={logoSpotNRide} style={{width:30, height:43}}/>
+                <Text style={{color: 'rgba(239, 83, 80, 100)',fontSize:30, marginLeft:5}}> SpotNRide </Text>
+                </View>
                  <TextInput
+                 placeholder={'Email'}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 50,borderRadius:3,
-            marginTop:250, marginLeft:20,marginRight:20,width:310}}
+             marginLeft:20,marginRight:20,width:310}}
                 onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
                 underlineColorAndroid='transparent'
             />
 
                 <TextInput
+                placeholder={'Password'}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 10,marginBottom: 10,borderRadius:3,
             marginTop:10, marginLeft:20,marginRight:20,width:310}}
                 onChangeText={(password) => this.setState({password})}
@@ -56,7 +65,8 @@ class Login extends Component {
             <Text style={{marginBottom:10,marginTop:10,color:'#f0f0f0'}}> {this.state.error} </Text>
             
                 <Button title="Login"
-                style={{width:200}}
+                style={{width:200, marginBottom: 250}}
+                backgroundColor= 'rgba(239, 83, 80, 100)'
                 buttonStyle={{borderRadius: 3}}
                     onPress={this.loginAction.bind(this)}
                     />
