@@ -1,5 +1,5 @@
-#SpotNRide
-##The new app for enthusiast riders.
+# SpotNRide
+## The new app for enthusiast riders.
 
 For all those who want to skate, roller and all sports glide, find a spot will not be a problem.
 Our app aims to locate the best places to have fun with your friends!
