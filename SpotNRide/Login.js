@@ -19,7 +19,7 @@ class Login extends Component {
 
 
     loginAction() {
-        let that =this
+        let that =this/*
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(user){
           that.props.navigation.navigate('screenMap')  
         }).catch(error => {
@@ -27,8 +27,8 @@ class Login extends Component {
             this.setState({
                 error: error.code
             })
-        })
-        
+        })*/
+        that.props.navigation.navigate('screenMap') 
 
     }
 

@@ -1,9 +1,10 @@
 import React, {Component}  from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
-import MapScreen from './Map.js'
+import MapScreen from 'Map'
 import { ButtonGroup } from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
 import {ScrollView, FlatList} from 'react-native'
+import backImage from './img/arrow_back.jpg'
 
 
 class Spot extends Component {
@@ -36,14 +37,18 @@ class Spot extends Component {
         const {selectedIndex} = this.state
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginTop: 60}} >
+            <View style={{flex: 1, flexDirection: 'column',marginTop: 40 }} >
 
-            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Image style={{}} />
-            <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}> 
-            <Text style={{}}></Text>
-            <Text style={{}}></Text>
-            <Text style={{}}></Text>
+            <View style={{flex: 1, flexDirection: 'row',height:90,marginBottom:60, alignItems:'flex-start', marginLeft:20, marginRight:20 }}> 
+            <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 100, height:100, zIndex: 20,alignSelf:'flex-start'}}
+         source={require('./img/skatePark.png')} />
+            <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between',marginTop: 20, marginLeft: 10}}> 
+            <Text style={{fontWeight:'bold', fontSize:30}}>Cosanostra</Text>
+            <Text style={{fontSize:14, marginTop:5}}>Description : </Text>
+            <Text style={{fontSize:14, marginTop:25}}>Type </Text>
+            <Text style={{fontSize:14, marginTop:10}}>Activités : </Text>
+            <Text style={{fontSize:14, marginTop:10}}>Difficulté : </Text>
+            <Text style={{fontSize:14, marginTop:10}}>Couvert : </Text>
             </View>
             </View>
 
@@ -80,16 +85,13 @@ class Spot extends Component {
 
 const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={require('./img/star.png')} />
 
-export default StackNavigator(
-    {
-    HomeScreen: {
-      screen: Spot
-    },
-      screenMap: {
-        screen: Spot
-    }
+export default StackNavigator({
+    HomeScreen: { screen: Spot },
+    ScreenMap: { screen: MapScreen },
 },{navigationOptions: {
     headerTitle:'Spot',
-    headerRight: star
+    headerRight: star,
+    headerBackTitle: 'Map',
+    headerBackImage:{backImage}
 }}
   );
