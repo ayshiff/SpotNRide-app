@@ -4,7 +4,7 @@ import { ButtonGroup, Overlay, Button } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
 import Mapv from './Map.js'
 import {StackNavigator} from 'react-navigation';
-
+import * as firebase from 'firebase';
 
 
 class Login extends Component {
@@ -35,25 +35,29 @@ class Login extends Component {
     render(){
 
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginLeft: 20,marginRight:20,marginTop: 200}} >
+            <View style={{flex: 1, flexDirection: 'column', backgroundColor:'#fafafa', alignItems:'center'}} >
                  <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 50}}
-                onChangeText={(text) => this.setState({email})}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 50,borderRadius:3,
+            marginTop:250, marginLeft:20,marginRight:20,width:310}}
+                onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
                 underlineColorAndroid='transparent'
             />
 
                 <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 10,marginBottom: 10}}
-                onChangeText={(text) => this.setState({login})}
-                value={this.state.login}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 10,marginBottom: 10,borderRadius:3,
+            marginTop:10, marginLeft:20,marginRight:20,width:310}}
+                onChangeText={(password) => this.setState({password})}
+                value={this.state.password}
+                secureTextEntry={true}
                 underlineColorAndroid='transparent'
             />
 
-            <Text style={{marginBottom:10,marginTop:10,color: 'red'}}> {this.state.error} </Text>
+            <Text style={{marginBottom:10,marginTop:10,color:'#f0f0f0'}}> {this.state.error} </Text>
             
                 <Button title="Login"
-              //  style={{marginTop: 100}}
+                style={{width:200}}
+                buttonStyle={{borderRadius: 3}}
                     onPress={this.loginAction.bind(this)}
                     />
             </View>
