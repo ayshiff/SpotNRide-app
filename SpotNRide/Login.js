@@ -12,9 +12,24 @@ class Login extends Component {
     constructor(props){
         super(props)
         this.state = {
-            login: '',
+            email: '',
             password: ''
         }
+    }
+
+
+    loginAction() {
+        let that =this
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(user){
+          that.props.navigation.navigate('screenMap')  
+        }).catch(error => {
+            console.log(error.code)
+            this.setState({
+                error: error.code
+            })
+        })
+        
+
     }
 
     render(){
@@ -23,8 +38,8 @@ class Login extends Component {
             <View style={{flex: 1, flexDirection: 'column',marginLeft: 20,marginRight:20,marginTop: 200}} >
                  <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 50}}
-                onChangeText={(text) => this.setState({login})}
-                value={this.state.login}
+                onChangeText={(text) => this.setState({email})}
+                value={this.state.email}
                 underlineColorAndroid='transparent'
             />
 
@@ -34,9 +49,12 @@ class Login extends Component {
                 value={this.state.login}
                 underlineColorAndroid='transparent'
             />
+
+            <Text style={{marginBottom:10,marginTop:10,color: 'red'}}> {this.state.error} </Text>
+            
                 <Button title="Login"
               //  style={{marginTop: 100}}
-                    onPress={()=> this.props.navigation.navigate('screenMap')}
+                    onPress={this.loginAction.bind(this)}
                     />
             </View>
         )

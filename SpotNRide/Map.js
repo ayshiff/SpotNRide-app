@@ -135,10 +135,16 @@ class Map extends React.Component {
        position:'absolute', // Remove the absolute position
       backgroundColor:'#f6f6f6',      
     }}>
+
+    {/* Boutons de navigation*/}
     <TouchableHighlight onPress={() => this.props.navigation.navigate('Profile')}>
     <Image style={{width: 26, height: 26,position:'absolute',zIndex:2147483647,right: 17, bottom: 14}}  source={require('./img/profile.png')} />
 </TouchableHighlight>
-    
+{/* 
+<TouchableHighlight onPress={() => this.props.navigation.navigate('Profile')}>
+    <Image style={{width: 26, height: 26,position:'absolute',zIndex:2147483647,right: 17, bottom: 14}}  source={require('./img/profile.png')} />
+</TouchableHighlight>
+    */}
     </View>
     
 
