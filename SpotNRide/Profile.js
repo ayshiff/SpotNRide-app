@@ -36,14 +36,17 @@ class Profile extends Component {
     render(){
 
         const cardView = <View style = {{
-            marginTop: 10,marginLeft: 10,marginRight: 10,marginBottom: 10,flex: 1, flexDirection: 'row',
-            justifyContent: 'space-around', backgroundColor:'#fafafa'}}>
+            marginTop: 15,marginLeft: 40,marginRight: 25,marginBottom: 14,flex: 1, flexDirection: 'row',
+            justifyContent: 'space-around', backgroundColor:'#fafafa',shadowColor: '#000',
+            shadowOffset: { width: 0, height: 1 },
+            shadowOpacity: 0.2,
+            shadowRadius: 1.5,}}>
             
-        <Image style={{width:70, height: 'auto'}} source={iconSkatePark} />
+        <Image style={{width:80, height: 'auto', overflow:'auto', marginLeft:-20}} source={iconSkatePark} />
         <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}> 
             <Text style={{fontSize:20, fontWeight:'bold'}}> Cosanostra </Text>
             <Text style={{fontSize:14}}> Meilleur skatepark d'Olréans</Text>
-            <Text style={{fontSize: 10}}> 24 rue des Tours, 45000 Orléans</Text>
+            <Text style={{fontSize: 10, marginBottom: 4, marginTop:4}}> 24 rue des Tours, 45000 Orléans</Text>
             </View>
         </View>
 
@@ -51,7 +54,7 @@ class Profile extends Component {
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginTop: 60}} >
+            <View style={{flex: 1, flexDirection: 'column',paddingTop: 60,backgroundColor:'#fafafa'}} >
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around',marginLeft: 20, marginRight: 20}}> 
             <Image style={{}} />
@@ -72,7 +75,7 @@ class Profile extends Component {
                 textStyle={{fontSize: 13}}
       />               
                 </View >
-                <View style={{backgroundColor:'#f0f0f0', flex: 1}}>
+                <View style={{backgroundColor:'#f0f0f0', flex: 1,marginTop:-7}}>
                  <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems:'center', justifyContent: 'space-around',flexDirection: 'row',
                  flexWrap: 'wrap',flexDirection:'column'}} >
                  {cardView}
