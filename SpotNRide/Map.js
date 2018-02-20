@@ -1,11 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
-import { ButtonGroup, Overlay } from 'react-native-elements';
+import { StyleSheet, Text, View, TextInput, Image, Switch, Modal,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
+import { ButtonGroup, Overlay, Slider } from 'react-native-elements';
 import { MapView, Location, Permissions, Constants } from 'expo';
 import {StackNavigator} from 'react-navigation';
 import Profile from './Profile'
 import Spot from './Spot'
 import data from './data.json'
+
+// For the picker
+/*const DropDown = require('react-native-dropdown');
+const {
+  Select,
+  Option,
+  OptionList,
+  updatePosition
+} = DropDown;*/
+
 // import mapStyle from './MapStyle'
 
 class Map extends React.Component {
@@ -19,11 +29,11 @@ class Map extends React.Component {
       selectedIndex: 0,
       isVisible: false,
       switchValue: false,
-      type: 'Skatepark',
-      activite: 'Activités',
       renderbottomButton: false,
       showBottomButtonIndex:0,
-      markers: data
+      markers: data,
+      type: '',
+      acrivite: ''
         
       }
     this.updateIndex = this.updateIndex.bind(this)
@@ -81,6 +91,24 @@ class Map extends React.Component {
     }
   }
 
+ /* componentDidMount() {
+    updatePosition(this.refs['SELECT1']);
+    updatePosition(this.refs['OPTIONLIST']);
+  }*/
+
+  _getOptionList() {
+    return this.refs['OPTIONLIST'];
+  }
+
+  
+  _type(ride) {
+
+	this.setState({
+      //...this.state,
+      type: ride
+    });
+  }
+
   render() {
     // Modal lors du click sur un boutton
     const showModal = <View style={{
@@ -91,7 +119,7 @@ class Map extends React.Component {
       marginRight: 30,
       marginLeft: 30,
       marginTop: 100,
-      paddingBottom:20,
+      padding: 10,
       width: 300,
       position: 'absolute',
       zIndex:2147483647,
@@ -102,25 +130,32 @@ class Map extends React.Component {
       shadowRadius: 1.5,
       height: 300}}>
 
-      <Text >Type</Text>
-      <Picker
-        selectedValue={this.state.type}
-        onValueChange={(itemValue, itemIndex) => this.setState({type: itemValue})}>
-        <Picker.Item label="Skatepark" value="Skatepark" />
-        <Picker.Item label="Outdoor" value="Outdoor" />
-        </Picker>
+      <Text >Difficulté </Text>
+      <Slider
+    value={this.state.value}
+    onValueChange={(value) => this.setState({value})}
+    thumbTintColor={'#fafafa'}
+    minimumTrackTintColor={'#f44336'}
+     />
 
-      {/*  <Picker
-        selectedValue={this.state.activite}
-        onValueChange={(itemValue, itemIndex) => this.setState({activite: itemValue})}>
-        <Picker.Item label="Skateboard" value="Skateboard" />
-        <Picker.Item label="Ride" value="Ride" />
-        </Picker>*/}
+      <Text >Type</Text>
+      {/* For the picker */}
+      {/*
+      <Select
+            width={250}
+            ref="SELECT1"
+            optionListRef={this._getOptionList.bind(this)}
+            defaultValue="Skatepark"
+            onSelect={this._type.bind(this)}>
+            <Option>Bike</Option>
+            <Option>Roller</Option>
+          </Select>*/}
+
 
       <Text >Couvert</Text>
       <Switch value={this.state.switchValue}
       onValueChange={(value) => this.setState({switchValue: value}) }
-       style={{ marginTop: 10, height: 5, width: 20 }}
+       style={{ height: 5, width: 20 }}
         onTintColor='#f44336'/></View>
 
     const showBottomButton = 
