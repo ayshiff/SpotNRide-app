@@ -46,7 +46,7 @@ class Login extends Component {
                  <TextInput
                  placeholder={'Email'}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 50,borderRadius:3,
-             marginLeft:20,marginRight:20,width:310}}
+             marginLeft:20,marginRight:20,width:300}}
                 onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
                 underlineColorAndroid='transparent'
@@ -55,7 +55,7 @@ class Login extends Component {
                 <TextInput
                 placeholder={'Password'}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1,marginTop: 10,marginBottom: 10,borderRadius:3,
-            marginTop:10, marginLeft:20,marginRight:20,width:310}}
+            marginTop:10, marginLeft:20,marginRight:20,width:300}}
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
                 secureTextEntry={true}
@@ -64,10 +64,10 @@ class Login extends Component {
 
             <Text style={{marginBottom:10,marginTop:10,color:'#f0f0f0'}}> {this.state.error} </Text>
             
-                <Button title="Login"
+                <Button title="Se connecter"
                 style={{width:200, marginBottom: 250}}
                 backgroundColor= 'rgba(239, 83, 80, 100)'
-                buttonStyle={{borderRadius: 3}}
+                buttonStyle={{borderRadius: 6}}
                     onPress={this.loginAction.bind(this)}
                     />
             </View>

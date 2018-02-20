@@ -91,10 +91,15 @@ class Map extends React.Component {
       marginRight: 30,
       marginLeft: 30,
       marginTop: 100,
+      paddingBottom:20,
       width: 300,
       position: 'absolute',
       zIndex:2147483647,
       backgroundColor:'#f0f0f0',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.2,
+      shadowRadius: 1.5,
       height: 300}}>
 
       <Text >Type</Text>

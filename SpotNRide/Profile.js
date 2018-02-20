@@ -36,7 +36,7 @@ class Profile extends Component {
     render(){
 
         const cardView = <View style = {{
-            marginTop: 30,marginLeft: 10,marginRight: 10,marginBottom: 10,flex: 1, flexDirection: 'row',
+            marginTop: 10,marginLeft: 10,marginRight: 10,marginBottom: 10,flex: 1, flexDirection: 'row',
             justifyContent: 'space-around', backgroundColor:'#fafafa'}}>
             
         <Image style={{width:70, height: 'auto'}} source={iconSkatePark} />
@@ -74,7 +74,7 @@ class Profile extends Component {
                 </View >
                 <View style={{backgroundColor:'#f0f0f0', flex: 1}}>
                  <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems:'center', justifyContent: 'space-around',flexDirection: 'row',
-                 flexWrap: 'wrap'}} >
+                 flexWrap: 'wrap',flexDirection:'column'}} >
                  {cardView}
                  {cardView}
                  {cardView}
