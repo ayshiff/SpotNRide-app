@@ -181,6 +181,7 @@ class Map extends React.Component {
       coordinate={marker.latlng}
       title={marker.title}
       description={marker.adress}
+      image={require('./img/spotnride.png')}
     />
   ))}
   </MapView>
