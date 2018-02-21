@@ -7,16 +7,7 @@ import Profile from './Profile'
 import Spot from './Spot'
 import data from './data.json'
 
-// For the picker
-/*const DropDown = require('react-native-dropdown');
-const {
-  Select,
-  Option,
-  OptionList,
-  updatePosition
-} = DropDown;*/
-
-// import mapStyle from './MapStyle'
+import ModalSelector from 'react-native-modal-selector'
 
 class Map extends React.Component {
     
@@ -33,7 +24,7 @@ class Map extends React.Component {
       showBottomButtonIndex:0,
       markers: data,
       type: '',
-      acrivite: ''
+      activite: ''
         
       }
     this.updateIndex = this.updateIndex.bind(this)
@@ -96,20 +87,22 @@ class Map extends React.Component {
     updatePosition(this.refs['OPTIONLIST']);
   }*/
 
-  _getOptionList() {
-    return this.refs['OPTIONLIST'];
-  }
-
-  
-  _type(ride) {
-
-	this.setState({
-      //...this.state,
-      type: ride
-    });
-  }
 
   render() {
+
+    let index = 0;
+        const dataActivites = [
+            { key: index++, section: true, label: 'Bike' },
+            { key: index++, label: 'Roller' },
+
+        ];
+
+        const dataType = [
+          { key: index++, section: true, label: 'Skatepark' },
+          { key: index++, label: 'Test' },
+          { key: index++, label: 'Test' },
+      ];
+
     // Modal lors du click sur un boutton
     const showModal = <View style={{
       paddingLeft: 20,
@@ -138,21 +131,19 @@ class Map extends React.Component {
     minimumTrackTintColor={'#f44336'}
      />
 
-      <Text >Type</Text>
-      {/* For the picker */}
-      {/*
-      <Select
-            width={250}
-            ref="SELECT1"
-            optionListRef={this._getOptionList.bind(this)}
-            defaultValue="Skatepark"
-            onSelect={this._type.bind(this)}>
-            <Option>Bike</Option>
-            <Option>Roller</Option>
-          </Select>*/}
+      <Text style={{marginBottom:5}} >Type</Text>
+      <ModalSelector
+                    data={dataType}
+                    initValue="Skatepark"
+                    onChange={(option)=>{ this.setState({type: option.label}) }} />
 
+      <Text style={{marginBottom:5, marginTop: 5}} >Activités</Text>
+      <ModalSelector
+                    data={dataActivites}
+                    initValue="Skateboard"
+                    onChange={(option)=>{ this.setState({activite: option.label}) }} />
 
-      <Text >Couvert</Text>
+      <Text style={{marginBottom:5, marginTop: 5}} >Couvert</Text>
       <Switch value={this.state.switchValue}
       onValueChange={(value) => this.setState({switchValue: value}) }
        style={{ height: 5, width: 20 }}
