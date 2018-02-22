@@ -39,7 +39,7 @@ class Login extends Component {
             <View style={{flex: 1, flexDirection: 'column', backgroundColor:'#fafafa', alignItems:'center', 
         justifyContent: 'space-between'}} >
 
-                <View style={{flex: 1,flexDirection: 'row', marginTop:280}}>
+                <View style={{flex: 1,flexDirection: 'row', marginTop:220}}>
                 <Image source={logoSpotNRide} style={{width:30, height:43}}/>
                 <Text style={{color: 'rgba(239, 83, 80, 100)',fontSize:30, marginLeft:5}}> SpotNRide </Text>
                 </View>
@@ -65,7 +65,7 @@ class Login extends Component {
             <Text style={{marginBottom:10,marginTop:10,color:'#f0f0f0'}}> {this.state.error} </Text>
             
                 <Button title="Se connecter"
-                style={{width:200, marginBottom: 250}}
+                style={{width:200, marginBottom: 280}}
                 backgroundColor= 'rgba(239, 83, 80, 100)'
                 buttonStyle={{borderRadius: 6}}
                     onPress={this.loginAction.bind(this)}

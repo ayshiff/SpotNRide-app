@@ -28,6 +28,7 @@ class Map extends React.Component {
         
       }
     this.updateIndex = this.updateIndex.bind(this)
+    this.toggleValue = this.toggleValue.bind(this)
   }
 
 
@@ -87,6 +88,10 @@ class Map extends React.Component {
     updatePosition(this.refs['OPTIONLIST']);
   }*/
 
+  toggleValue(value) {
+    this.setState({switchValue: value})
+  }
+
 
   render() {
 
@@ -145,8 +150,9 @@ class Map extends React.Component {
 
       <Text style={{marginBottom:5, marginTop: 5}} >Couvert</Text>
       <Switch value={this.state.switchValue}
+      disabled={false}
       onValueChange={(value) => this.setState({switchValue: value}) }
-       style={{ height: 5, width: 20 }}
+       style={{ height: 5, width: 20, zIndex:80453 }}
         onTintColor='#f44336'/></View>
 
     const showBottomButton = 
@@ -164,7 +170,8 @@ class Map extends React.Component {
        borderTopLeftRadius: 120,
        borderTopRightRadius: 120,
        position:'absolute', // Remove the absolute position
-      backgroundColor:'#f6f6f6',      
+      backgroundColor:'#f6f6f6', 
+      overflow: 'visible'     
     }}>
 
     {/* Boutons de navigation*/}
@@ -207,7 +214,7 @@ class Map extends React.Component {
       coordinate={marker.latlng}
       title={marker.title}
       description={marker.adress}
-      image={require('./img/spotnride.png')}
+      //image={require('./img/spotnride.png')}
     />
   ))}
   </MapView>
