@@ -11,7 +11,7 @@ server.get('/', function(req, res){
 
 })
 
-server.use('./api', apiRoutes)
+server.use('/api/', apiRoutes)
 
 server.listen(8080, function(){
     console.log('Server launched')
