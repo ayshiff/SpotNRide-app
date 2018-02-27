@@ -55,6 +55,7 @@ class Profile extends Component {
         
         return (
             <View style={{flex: 1, flexDirection: 'column',paddingTop: 60,backgroundColor:'#fafafa'}} >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack(null)}><Image source={require('./img/arrow_back.jpg')} style={{marginTop: -70, marginLeft:10, width:20,height:20,zIndex:2147483647}} /></TouchableOpacity>
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around',marginLeft: 20, marginRight: 20}}> 
             <Image style={{}} />
@@ -100,11 +101,9 @@ export default StackNavigator(
     HomeScreen: {
       screen: Profile,
       headerBackTitle: 'Back'},
-      screenMap: {
-        screen: Profile
-    }
+
 },{navigationOptions: {
     headerTitle:'Profile',
-    headerRight: star
+    headerRight: star,
 }}
   );

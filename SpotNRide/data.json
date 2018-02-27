@@ -1,4 +1,5 @@
-[
+{
+  "Markers": [
   {
     "latlng": {
       "latitude": 48.8298227,
@@ -20419,3 +20420,5 @@
     "title": "Voie verte du Pays Cathare - Lavelanet - Mirepoix"
   }
 ]
+}
+
