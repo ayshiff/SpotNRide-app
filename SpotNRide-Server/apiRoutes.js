@@ -8,6 +8,7 @@ exports.router = (function(){
     apiRouter.route('/users/register/').post(usersCtrl.register)
     apiRouter.route('/users/login/').post(usersCtrl.login)
     apiRouter.route('/Markers/').get(markersCtrl.markers)
+    apiRouter.route('/Markers/').post(markersCtrl.addMarker)
 
     return apiRouter
 })()
