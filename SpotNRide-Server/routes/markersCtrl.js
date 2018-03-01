@@ -62,5 +62,23 @@ module.exports = {
         .catch(function(error){
             return res.status(400).json({'error': error.message})
         })
+    },
+
+    deleteMarker: function(req, res){
+        let MarkerId = req.body.MarkerId
+
+        models.Markers.destroy({
+            attributes: ['id'],
+            where: {id :MarkerId}
+        })
+        .then(function(MarkerDeleted){
+            return res.status(201).json({
+                'MarkerId': MarkerDeleted.id
+            })
+        })
+        .catch(function(){
+            return res.status(400).json({'error': 'error marker delete'})
+        })
+
     }
 }
