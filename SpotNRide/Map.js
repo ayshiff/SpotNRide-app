@@ -6,6 +6,7 @@ import {StackNavigator} from 'react-navigation';
 import Profile from './Profile'
 import Spot from './Spot'
 import data from './data.json'
+import axios from 'axios'
 
 import ModalSelector from 'react-native-modal-selector'
 
@@ -22,7 +23,7 @@ class Map extends React.Component {
       switchValue: false,
       renderbottomButton: false,
       showBottomButtonIndex:0,
-      markers: data,
+      markers: '',
       type: '',
       activite: ''
         
@@ -51,9 +52,20 @@ class Map extends React.Component {
     
   }
 
+  fetchMarkers(){
+    axios.get('http://localhost:8080/api/Markers/')
+    .then(data => this.setState({markers: data}))
+    console.log(this.state.markers)
+  }
+  
+
   componentWillMount() {
       this._getLocationAsync();
+      
+      console.log(this.state.markers)
   }
+
+  
 
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -94,6 +106,7 @@ class Map extends React.Component {
 
 
   render() {
+   this.fetchMarkers()
 
     let index = 0;
         const dataActivites = [
@@ -208,12 +221,13 @@ class Map extends React.Component {
          // customMapStyle={mapStyle}
         }}
       >
-      {this.state.markers.map(marker => (
+      {this.state.markers.markers.map(marker => (
     <MapView.Marker
         onPress= {() => this.props.navigation.navigate('Spot')}
-      coordinate={marker.latlng}
-      title={marker.title}
-      description={marker.adress}
+      coordinate={{"latitude": marker.Markers_latlng_latitude,
+      "longitude": marker.Markers_latlng_longitude}}
+      title={marker.Markers_title}
+      description={marker.Markers_title}
       //image={require('./img/spotnride.png')}
     />
   ))}
