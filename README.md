@@ -1,4 +1,4 @@
-![logo](/references/logo.jpg)
+![logo](/references/logo.jpg | width=150)
 ## The new app for enthusiast riders.
 (Note: this version is no longer maintained, I am currently working on the ejected version which i can't put on github !) .  
 
