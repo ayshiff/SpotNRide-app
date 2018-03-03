@@ -1,5 +1,6 @@
 let jwt = require('jsonwebtoken')
 
+// The secret key which will be updated
 const JWT_SIGN_SECRET = 'rYERXjwHbBJtdjfB2TfMUrKXFL0POzmx'
 
 module.exports = {
