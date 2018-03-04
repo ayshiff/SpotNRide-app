@@ -9,10 +9,10 @@
 
 ![Scrennshot](/references/Screenshot.jpg)
 
-# SpotNRide-Server folder
+## SpotNRide-Server folder   
 It contains all the back-end work (REST API). The list of Markers is secret and not included in the repo.
 Technos: express / MySQL / sequelize
----
-# SpotNRide-Server folder
+
+## SpotNRide-Server folder   
 It contains all the react-native work (expo).
 Technos: react-native
