@@ -1,5 +1,7 @@
 <p align="center">
-<img src="/references/logo.png" >
+<a href='https://ayshiff.github.io/SpotNRide/'>
+<img src="/references/logo.png" width='350px' >
+ </a>
 </p>
 
 
