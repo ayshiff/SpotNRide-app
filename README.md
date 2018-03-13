@@ -1,4 +1,8 @@
-![logo](/references/logo.jpg)
+<p align="center">
+<img src="/references/logo.jpg" >
+</p>
+
+
 ## The new app for enthusiast riders.
 (Note: this version is no longer maintained, I am currently working on the ejected version which i can't put on github !) .  
 
