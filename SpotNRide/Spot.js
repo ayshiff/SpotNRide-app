@@ -37,7 +37,7 @@ class Spot extends Component {
         const {selectedIndex} = this.state
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         return (
-            <View style={{flex: 1, flexDirection: 'column',marginTop: 40 }} >
+            <View style={{flex: 1, flexDirection: 'column' }} >
 
             <View style={{flex: 1, flexDirection: 'row',height:90,marginBottom:60, alignItems:'flex-start', marginLeft:20, marginRight:20 }}> 
             <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 100, height:100, zIndex: 20,alignSelf:'flex-start'}}
@@ -88,10 +88,5 @@ const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={req
 export default StackNavigator({
     HomeScreen: { screen: Spot },
     ScreenMap: { screen: MapScreen },
-},{navigationOptions: {
-    headerTitle:'Spot',
-    headerRight: star,
-    headerBackTitle: 'Map',
-    headerBackImage:{backImage}
-}}
+}
   );

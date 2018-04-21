@@ -54,10 +54,9 @@ class Profile extends Component {
         const buttons = [{element: this.component1},{element: this.component2},{element: this.component3}]
         
         return (
-            <View style={{flex: 1, flexDirection: 'column',paddingTop: 60,backgroundColor:'#fafafa'}} >
-            <TouchableOpacity onPress={() => this.props.navigation.goBack(null)}><Image source={require('./img/arrow_back.jpg')} style={{marginTop: -70, marginLeft:10, width:20,height:20,zIndex:2147483647}} /></TouchableOpacity>
+            <View style={{flex: 1, flexDirection: 'column',backgroundColor:'#fafafa'}} >
 
-            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around',marginLeft: 20, marginRight: 20}}> 
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between',marginLeft: 20, marginRight: 20}}> 
             <Image style={{}} />
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}> 
             <Text style={{fontSize:20, fontWeight:'bold'}}> Thomas Tuillier</Text>
@@ -100,10 +99,11 @@ export default StackNavigator(
     {
     HomeScreen: {
       screen: Profile,
-      headerBackTitle: 'Back'},
+      navigationOptions: () => ({
+        title: `Profile`,
+        headerRight: star
+      })
+    }
 
-},{navigationOptions: {
-    headerTitle:'Profile',
-    headerRight: star,
-}}
+}
   );
