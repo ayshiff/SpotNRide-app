@@ -82,5 +82,7 @@ export default StackNavigator(
       screenMap: {
         screen: Mapv,
     }
-},{ headerMode: 'none' }
+},{
+     headerMode: 'none' 
+    }
   );

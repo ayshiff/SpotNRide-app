@@ -88,5 +88,7 @@ const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={req
 export default StackNavigator({
     HomeScreen: { screen: Spot },
     ScreenMap: { screen: MapScreen },
-}
+}, {
+    headerMode: 'none' 
+   }
   );
