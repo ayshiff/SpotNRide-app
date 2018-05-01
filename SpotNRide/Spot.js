@@ -30,7 +30,7 @@ class Spot extends Component {
     component3 = () => <Image style={{width: 20, resizeMode:'contain'}} source={require('./img/conversion.png')} />
 
     render(){
-
+        const {params} = this.props.navigation.state
         const imageView = <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 140, height:140, zIndex: 20}}
          source={require('./img/imageSkatePark.png')} />
 
@@ -43,7 +43,7 @@ class Spot extends Component {
             <Image style={{marginRight:10,marginTop:10, marginLeft:10, width: 100, height:100, zIndex: 20,alignSelf:'flex-start'}}
          source={require('./img/skatePark.png')} />
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between',marginTop: 20, marginLeft: 10}}> 
-            <Text style={{fontWeight:'bold', fontSize:30}}>Cosanostra</Text>
+            <Text style={{fontWeight:'bold', fontSize:30}}>{params.spot}</Text>
             <Text style={{fontSize:14, marginTop:5}}>Description : </Text>
             <Text style={{fontSize:14, marginTop:25}}>Type </Text>
             <Text style={{fontSize:14, marginTop:10}}>Activités : </Text>

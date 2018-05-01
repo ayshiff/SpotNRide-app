@@ -249,7 +249,7 @@ class Map extends React.Component {
           {this.state.markers
             ? this.state.markers.Markers.map(marker => (
                 <MapView.Marker
-                  onPress={() => this.props.navigation.navigate("Spot")}
+                  onPress={() => this.props.navigation.navigate("Spot", {spot: marker.title})}
                   coordinate={marker.latlng}
                   title={marker.title}
                   description={marker.adress}
