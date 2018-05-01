@@ -104,6 +104,7 @@ export default StackNavigator(
         headerRight: star
       })
     }
-
-}
+}, {
+    headerMode: 'none'
+ }
   );
