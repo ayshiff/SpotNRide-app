@@ -1,15 +1,13 @@
 import React, {Component}  from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
-import Mapv from './Map.js'
-import {StackNavigator} from 'react-navigation';
 import { ButtonGroup } from 'react-native-elements';
 
 import {ScrollView} from 'react-native'
-import iconStarProfile from './img/starProfile.png'
-import iconSettings from './img/settings.png'
-import iconEmail from './img/email.png'
+import iconStarProfile from '../../img/starProfile.png'
+import iconSettings from '../../img/settings.png'
+import iconEmail from '../../img/email.png'
 
-import iconSkatePark from './img/skatePark.png'
+import iconSkatePark from '../../img/skatePark.png'
 
 class Profile extends Component {
 
@@ -93,18 +91,6 @@ class Profile extends Component {
     }
 }
 
-const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={require('./img/star.png')} />
+const star = <Image style={{width: 16, height: 16,marginRight: 15}}  source={require('../../img/star.png')} />
 
-export default StackNavigator(
-    {
-    HomeScreen: {
-      screen: Profile,
-      navigationOptions: () => ({
-        title: `Profile`,
-        headerRight: star
-      })
-    }
-}, {
-    headerMode: 'none'
- }
-  );
+export default Profile;

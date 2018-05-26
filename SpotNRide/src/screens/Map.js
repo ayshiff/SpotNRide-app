@@ -13,10 +13,9 @@ import {
 } from "react-native";
 import { ButtonGroup, Overlay, Slider } from "react-native-elements";
 import { MapView, Location, Permissions, Constants } from "expo";
-import { StackNavigator } from "react-navigation";
 import Profile from "./Profile";
 import Spot from "./Spot";
-import data from "./data.json";
+import data from "../../data.json";
 import axios from "axios";
 
 import ModalSelector from "react-native-modal-selector";
@@ -88,7 +87,7 @@ class Map extends React.Component {
   componentSearch = () => (
     <Image
       style={{ width: 16, height: 18.5 }}
-      source={require("./img/search.png")}
+      source={require("../../img/search.png")}
     />
   );
 
@@ -217,7 +216,7 @@ class Map extends React.Component {
               right: 17,
               bottom: 14
             }}
-            source={require("./img/profile.png")}
+            source={require("../../img/profile.png")}
           />
         </TouchableHighlight>
         {/* 
@@ -296,7 +295,7 @@ class Map extends React.Component {
             onPress={() => this.showButton()}
           >
             <Image
-              source={require("./img/bottomButton.png")}
+              source={require("../../img/bottomButton.png")}
               style={{ height: 69, width: 115, bottom: 0 }}
             />
           </TouchableOpacity>
@@ -340,19 +339,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default StackNavigator(
-  {
-    HomeScreen: {
-      screen: Map,
-      navigationOptions: () => ({
-        headerMode: 'none'
-      })
-    },
-    Profile: {
-      screen: Profile
-    },
-    Spot: {
-      screen: Spot
-    }
-  }
-);
+export default Map;

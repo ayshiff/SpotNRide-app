@@ -1,5 +1,6 @@
 import React from 'react';
-import Login from './Login.js'
+
+import Navigation from './src/Navigation';
 
 import ReactNative from "react-native";
 import * as firebase from 'firebase';
@@ -15,13 +16,11 @@ export default class App extends React.Component {
 firebase.initializeApp(firebaseConfig);
     this.state = {
     }
-
   }
 
   render(){
-    
     return(
-      <Login />
+        <Navigation />
     )
   }
 }

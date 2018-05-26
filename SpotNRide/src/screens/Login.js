@@ -1,11 +1,7 @@
 import React, {Component}  from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Switch, Modal, Picker } from 'react-native';
 import { ButtonGroup, Overlay, Button } from 'react-native-elements';
-import { MapView, Location, Permissions, Constants } from 'expo';
-import Mapv from './Map.js'
-import {StackNavigator} from 'react-navigation';
-import * as firebase from 'firebase';
-import logoSpotNRide from './img/spotnride.png'
+import logoSpotNRide from '../../img/spotnride.png'
 
 
 class Login extends Component {
@@ -29,7 +25,7 @@ class Login extends Component {
                 error: error.code
             })
         })*/
-        that.props.navigation.navigate('screenMap') 
+        that.props.navigation.navigate('Map')
 
     }
 
@@ -75,14 +71,4 @@ class Login extends Component {
     }
 }
 
-export default StackNavigator(
-    {
-    HomeScreen: {
-      screen: Login},
-      screenMap: {
-        screen: Mapv,
-    }
-},{
-     headerMode: 'none' 
-    }
-  );
+export default Login;
